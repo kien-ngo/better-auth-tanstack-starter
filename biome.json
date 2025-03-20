@@ -1,62 +1,55 @@
 {
-    "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-    "vcs": {
-        "enabled": true,
-        "clientKind": "git",
-        "useIgnoreFile": true,
-        "defaultBranch": "main"
-    },
-    "files": {
-        "ignore": ["./components/ui/**", "./migrations/**", "routeTree.gen.ts"]
-    },
-    "formatter": {
-        "indentStyle": "space",
-        "indentWidth": 4,
-        "lineWidth": 100
-    },
-    "linter": {
-        "rules": {
-            "a11y": {
-                "noSvgWithoutTitle": "off",
-                "useGenericFontNames": "off"
-            },
-            "suspicious": {
-                "noArrayIndexKey": "off",
-                "noDoubleEquals": {
-                    "fix": "safe",
-                    "level": "warn",
-                    "options": {}
-                }
-            },
-            "style": {
-                "noNonNullAssertion": "off",
-                "useSelfClosingElements": {
-                    "fix": "safe",
-                    "level": "warn"
-                },
-                "useTemplate": {
-                    "fix": "safe",
-                    "level": "warn"
-                }
-            },
-            "correctness": {
-                "noUnusedImports": "info"
-            },
-            "nursery": {
-                "useSortedClasses": {
-                    "fix": "safe",
-                    "level": "info",
-                    "options": {
-                        "functions": ["cn"]
-                    }
-                }
-            }
-        }
-    },
-    "javascript": {
-        "formatter": {
-            "semicolons": "asNeeded",
-            "trailingCommas": "none"
-        }
+  "$schema": "https://biomejs.dev/schemas/1.9.2/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "nursery": {
+        "noEnum": "warn",
+        "noDuplicateElseIf": "error",
+        "noDynamicNamespaceImportAccess": "error",
+        "noExportedImports": "error",
+        "noMissingVarFunction": "error",
+        "useSortedClasses": "error"
+      },
+      "correctness": {
+        "useHookAtTopLevel": "error",
+        "noNewSymbol": "error",
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error",
+        "useArrayLiterals": "error"
+      },
+      "a11y": {
+        "useSemanticElements": "off"
+      },
+      "style": {
+        "noRestrictedGlobals": {
+          "options": {
+            "deniedGlobals": [
+              "Buffer"
+            ]
+          },
+          "level": "error"
+        },
+        "noUselessElse": "off"
+      }
     }
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space"
+  },
+  "overrides": [
+    {
+      "include": [
+        "node_modules"
+      ],
+      "linter": {
+        "enabled": false
+      }
+    }
+  ]
 }

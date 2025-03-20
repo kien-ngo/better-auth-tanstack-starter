@@ -10,39 +10,41 @@ import { authClient } from "@/lib/auth-client"
 
 // Create a client
 const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            staleTime: 1000 * 60
-        }
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60
     }
+  }
 })
 
 export function Providers({ children }: { children: ReactNode }) {
-    const router = useRouter()
+  const router = useRouter()
 
-    return (
-        <QueryClientProvider client={queryClient}>
-            <AuthQueryProvider>
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange
-                    themeColor={{
-                        light: "oklch(1 0 0)",
-                        dark: "oklch(0.145 0 0)"
-                    }}
-                >
-                    <AuthUIProviderTanstack
-                        authClient={authClient}
-                        navigate={(href) => router.navigate({ href })}
-                        replace={(href) => router.navigate({ href, replace: true })}
-                        LinkComponent={({ href, to, ...props }) => <Link to={href} {...props} />}
-                    >
-                        {children}
-                    </AuthUIProviderTanstack>
-                </ThemeProvider>
-            </AuthQueryProvider>
-        </QueryClientProvider>
-    )
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthQueryProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          themeColor={{
+            light: "oklch(1 0 0)",
+            dark: "oklch(0.145 0 0)"
+          }}
+        >
+          <AuthUIProviderTanstack
+            authClient={authClient}
+            navigate={(href) => router.navigate({ href })}
+            replace={(href) => router.navigate({ href, replace: true })}
+            LinkComponent={({ href, to, ...props }) => (
+              <Link to={href} {...props} />
+            )}
+          >
+            {children}
+          </AuthUIProviderTanstack>
+        </ThemeProvider>
+      </AuthQueryProvider>
+    </QueryClientProvider>
+  )
 }

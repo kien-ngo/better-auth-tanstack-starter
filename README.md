@@ -2,8 +2,6 @@
 
 [Demo](https://tanstack.better-auth-starter.com)
 
-- [Next.js](https://github.com/daveyplate/better-auth-nextjs-starter)
-
 ## Installation
 
 First, create a PostgreSQL Database then configure your environment variables.
@@ -49,8 +47,6 @@ Set up your hosting provider -
 [Biome](https://biomejs.dev)
 
 [TanStack Start](https://tanstack.com/start)
-
-[Turborepo](https://turbo.build)
 
 # Welcome to TanStack.com!
 
