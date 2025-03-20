@@ -1,24 +1,24 @@
-import { AuthUIProviderTanstack } from "@daveyplate/better-auth-ui/tanstack"
-import { Link, useRouter } from "@tanstack/react-router"
-import { ThemeProvider } from "next-themes"
-import type { ReactNode } from "react"
+import { AuthUIProviderTanstack } from "@daveyplate/better-auth-ui/tanstack";
+import { Link, useRouter } from "@tanstack/react-router";
+import { ThemeProvider } from "next-themes";
+import type { ReactNode } from "react";
 
-import { AuthQueryProvider } from "@daveyplate/better-auth-tanstack"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { AuthQueryProvider } from "@daveyplate/better-auth-tanstack";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { authClient } from "@/lib/auth-client"
+import { authClient } from "@/lib/auth-client";
 
 // Create a client
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60
-    }
-  }
-})
+      staleTime: 1000 * 60,
+    },
+  },
+});
 
 export function Providers({ children }: { children: ReactNode }) {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -30,7 +30,7 @@ export function Providers({ children }: { children: ReactNode }) {
           disableTransitionOnChange
           themeColor={{
             light: "oklch(1 0 0)",
-            dark: "oklch(0.145 0 0)"
+            dark: "oklch(0.145 0 0)",
           }}
         >
           <AuthUIProviderTanstack
@@ -46,5 +46,5 @@ export function Providers({ children }: { children: ReactNode }) {
         </ThemeProvider>
       </AuthQueryProvider>
     </QueryClientProvider>
-  )
+  );
 }

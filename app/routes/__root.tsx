@@ -1,60 +1,65 @@
-import { HeadContent, Outlet, Scripts, createRootRoute } from "@tanstack/react-router"
-import type { ReactNode } from "react"
+import {
+  HeadContent,
+  Outlet,
+  Scripts,
+  createRootRoute,
+} from "@tanstack/react-router";
+import type { ReactNode } from "react";
 
-import { Header } from "@/components/header"
-import globalsCss from "@/styles/globals.css?url"
-import { Providers } from "../providers"
+import { Header } from "@/components/header";
+import globalsCss from "@/styles/globals.css?url";
+import { Providers } from "../providers";
 
 export const Route = createRootRoute({
-    head: () => ({
-        meta: [
-            {
-                charSet: "utf-8"
-            },
-            {
-                name: "viewport",
-                content: "width=device-width, initial-scale=1"
-            },
-            {
-                title: "Better Auth TanStack Starter"
-            }
-        ],
-        links: [
-            { rel: "stylesheet", href: globalsCss },
-            { rel: "icon", href: "/favicon.ico" },
-            { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-            { rel: "manifest", href: "/manifest.webmanifest" }
-        ]
-    }),
-    component: RootComponent
-})
+  head: () => ({
+    meta: [
+      {
+        charSet: "utf-8",
+      },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
+      },
+      {
+        title: "Better Auth TanStack Starter",
+      },
+    ],
+    links: [
+      { rel: "stylesheet", href: globalsCss },
+      { rel: "icon", href: "/favicon.ico" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+    ],
+  }),
+  component: RootComponent,
+});
 
 function RootComponent() {
-    return (
-        <RootDocument>
-            <Outlet />
-        </RootDocument>
-    )
+  return (
+    <RootDocument>
+      <Outlet />
+    </RootDocument>
+  );
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
-    return (
-        <html lang="en">
-            <head>
-                <HeadContent />
-            </head>
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
 
-            <body>
-                <Providers>
-                    <div className="flex min-h-svh flex-col">
-                        <Header />
+      <body>
+        <Providers>
+          <div className="flex min-h-svh flex-col">
+            <Header />
 
-                        {children}
-                    </div>
-                </Providers>
+            {children}
+          </div>
+        </Providers>
 
-                <Scripts />
-            </body>
-        </html>
-    )
+        <Scripts />
+      </body>
+    </html>
+  );
 }

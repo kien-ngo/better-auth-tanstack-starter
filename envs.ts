@@ -1,5 +1,5 @@
-import { createEnv } from "@t3-oss/env-core"
-import { z } from "zod"
+import { createEnv } from "@t3-oss/env-core";
+import { z } from "zod";
 
 export const envs = createEnv({
   server: {
@@ -7,7 +7,7 @@ export const envs = createEnv({
     REDIS_URL: z.string().url(),
     BETTER_AUTH_SECRET: z.string().min(1),
     BETTER_AUTH_URL: z.string().url(),
-    ENABLE_REDIS: z.enum(["true", "false"])
+    ENABLE_REDIS: z.enum(["true", "false"]),
   },
 
   /**
@@ -39,5 +39,5 @@ export const envs = createEnv({
    * In order to solve these issues, we recommend that all new projects
    * explicitly specify this option as true.
    */
-  emptyStringAsUndefined: true
-})
+  emptyStringAsUndefined: true,
+});

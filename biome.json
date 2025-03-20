@@ -28,9 +28,7 @@
       "style": {
         "noRestrictedGlobals": {
           "options": {
-            "deniedGlobals": [
-              "Buffer"
-            ]
+            "deniedGlobals": ["Buffer"]
           },
           "level": "error"
         },
@@ -44,9 +42,7 @@
   },
   "overrides": [
     {
-      "include": [
-        "node_modules"
-      ],
+      "include": ["node_modules"],
       "linter": {
         "enabled": false
       }
